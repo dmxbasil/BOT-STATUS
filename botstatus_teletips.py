@@ -29,7 +29,7 @@ async def main_teletips():
                 GET_CHANNEL_OR_GROUP = await app.get_chat(int(CHANNEL_OR_GROUP_ID))
                 CHANNEL_OR_GROUP_NAME = GET_CHANNEL_OR_GROUP.title
                 CHANNEL_OR_GROUP_TYPE = GET_CHANNEL_OR_GROUP.type
-                xxx_teletips = f"📊 **<u>LIVE BOT STATUS</u>**\n\n**💬 {CHANNEL_OR_GROUP_TYPE}**: {CHANNEL_OR_GROUP_NAME}"
+                xxx_teletips = f"📊 **<b><u>ʟɪᴠᴇ ʙᴏᴛ ᴜᴘᴅᴀᴛᴇs</b></u>**\n\n**💬 {CHANNEL_OR_GROUP_TYPE}**: {CHANNEL_OR_GROUP_NAME}"
                 for bot in BOT_LIST:
                     try:
                         yyy_teletips = await app.send_message(bot, "/start")
@@ -39,7 +39,7 @@ async def main_teletips():
                         for ccc in zzz_teletips:
                             bbb = ccc.message_id
                         if aaa == bbb:
-                            xxx_teletips += f"\n\n🤖 **BOT**: @{bot}\n🔴 **STATUS**: down ❌"
+                            xxx_teletips += f"\n🤖 **ʙᴏᴛ**: @{bot}\n🔴 **sᴛᴀᴛᴜs**: ᴅᴏᴡɴ ❌"
                             for bot_admin_id in BOT_ADMIN_IDS:
                                 try:
                                     await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
@@ -47,15 +47,15 @@ async def main_teletips():
                                     pass
                             await app.read_history(bot)
                         else:
-                            xxx_teletips += f"\n\n🤖 **BOT**: @{bot}\n🟢 **STATUS**: alive ✅"
+                            xxx_teletips += f"\n🤖 **ʙᴏᴛ**: @{bot}\n🟢 **sᴛᴀᴛᴜs**: ᴜᴘ ✅"
                             await app.read_history(bot)
                     except FloodWait as e:
                         await asyncio.sleep(e.x)            
                 time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
                 last_update = time.strftime(f"%d %b %Y at %I:%M %p")
-                xxx_teletips += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n<i>♻️ Updates every 45min - Powered by Powerful Bot Status</i>"
+                xxx_teletips += f"\n\n✔️ ʟᴀsᴛ ᴄʜᴇᴄᴋᴇᴅ ᴏɴ »{last_update} ({TIME_ZONE})\n\n<i>♻️ ᴀᴜᴛᴏ ᴜᴘᴅᴀᴛᴇ ɪɴ ᴇᴠᴇʀʏ 45ᴍɪɴ - ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅᴍx ʙᴏᴛ sᴛᴀᴛᴜs</i>"
                 await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_teletips)
-                print(f"Last checked on: {last_update}")                
+                print(f"ʟᴀsᴛ ᴄʜᴇᴄᴋᴇᴅ ᴏɴ »{last_update}")                
                 await asyncio.sleep(2700)
                         
 app.run(main_teletips())
